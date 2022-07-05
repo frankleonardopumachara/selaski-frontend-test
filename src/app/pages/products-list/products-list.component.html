@@ -1,0 +1,12 @@
+<div class="row row-cols-1 g-4">
+  <div class="col" *ngFor="let product of products">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Description: {{ product.description }}</h5>
+        <p class="card-text"><span class="font-weight-bold text-muted">Cantidad:</span> {{ product.quantity }}</p>
+        <button type="button" class="btn btn-primary ml-1" (click)="select.emit(product)"><i class="fa-solid fa-pencil"></i></button>
+        <button type="button" class="btn btn-danger ml-1" (click)="delete.emit(product)"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

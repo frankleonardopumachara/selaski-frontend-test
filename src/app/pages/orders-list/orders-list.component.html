@@ -1,0 +1,47 @@
+<div class="container text-center">
+  <a href="#" role="button" class="btn btn-outline-primary" [routerLink]="['/home']">Volver</a>
+</div>
+
+<div class="flex-row mt-4">
+  <h1 class="d-inline">Ordenes</h1>
+  <a href="#" role="button" class="btn btn-primary float-right"
+     [routerLink]="['/order', 0]"
+  >
+    <i class="fa-solid fa-plus"></i> Crear
+  </a>
+</div>
+
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col" *ngFor="let order of orders">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">Orden Nro: {{ order.orderNumber }}</h5>
+        <p class="card-text"><span class="font-weight-bold text-muted">Proveedor:</span> {{ order.providerName }}</p>
+        <a href="#" role="button" class="btn btn-primary"
+           [routerLink]="['/order', order.idOrder]"
+        >
+          <i class="fa-solid fa-pencil"></i>
+        </a>
+        <button type="button" class="btn btn-danger ml-1" (click)="deleteOrder(content, order)"><i
+          class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Eliminar orden</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <p class="font-weight-bold">Se procedera a eliminar la orden y todos sus productos.</p>
+    <p>Esta seguro que quiere proceder con la acccion?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-primary" (click)="modal.dismiss('Save click')">Cancelar</button>
+    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">Eliminar</button>
+  </div>
+</ng-template>

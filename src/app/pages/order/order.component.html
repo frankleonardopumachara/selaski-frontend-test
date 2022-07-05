@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <a role="button" class="btn btn-outline-secondary" [routerLink]="['/orders-list']">Atras</a>
+      <button type="button" class="btn btn-primary ml-1" [disabled]="!orderForm.valid" (click)="save()">Guardar</button>
+      <h6 class="text-danger" *ngIf="!orderForm.valid">Te falta llenar algunos campo!</h6>
+    </div>
+  </div>
+  <div class="row mt-5">
+
+    <div class="col-6">
+      <h1>Detalles</h1>
+
+      <form [formGroup]="orderForm">
+        <div class="mb-3">
+          <label class="form-label">Usuario</label>
+          <ng-select [items]="users"
+                     bindLabel="name"
+                     bindValue="idUser"
+                     [formControlName]="userCN"
+          >
+          </ng-select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nro orden</label>
+          <input type="number" class="form-control" [formControlName]="orderNumberCN">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Fecha de la orden</label>
+          <input type="text" class="form-control" [disabled]="true" [value]="order.dateTime | date: 'dd/MM/yyyy hh:mm a'">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Nombre del proveedor</label>
+          <input type="text" class="form-control" [formControlName]="providerNameCN">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Observaciones</label>
+          <textarea class="form-control" rows="3" [formControlName]="observationsCN"></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Total</label>
+          <input type="text" class="form-control" [formControlName]="totalCN">
+        </div>
+      </form>
+    </div>
+
+
+    <div class="col-6">
+      <div class="mb-3">
+        <h1 class="d-inline">Productos</h1>
+        <button class="btn btn-primary float-right" (click)="openProduct()"><i class="fa-solid fa-plus"></i> Agregar
+        </button>
+        <app-products-list [products]="order.products" (select)="openProduct($event)"
+                           (delete)="deleteProduct(order, $event)"></app-products-list>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container text-center">
+  <a href="#" role="button" class="btn btn-outline-primary" [routerLink]="['/home']">Volver</a>
+</div>
+
+<div class="container">
+  <form [formGroup]="userForm" (submit)="createUser()">
+    <div class="mb-3">
+      <label class="form-label">Username</label>
+      <input type="text" class="form-control" [formControlName]="nameCN">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="text" class="form-control" [formControlName]="emailCN">
+      <label *ngIf="userForm.get(this.emailCN)?.errors?.email" class="text-danger">Introduzca un email valido</label>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Crear</button>
+  </form>
+</div>
+
+
+<div class="container mt-5">
+  <h1>Usuarios</h1>
+
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let user of users">
+          <h6>{{ user.name }}</h6>
+          <p>{{ user.email }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>

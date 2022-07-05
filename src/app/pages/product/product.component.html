@@ -1,0 +1,59 @@
+<div class="modal-header">
+  <h4 class="modal-title">Producto</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="productForm">
+    <div class="row">
+
+      <div class="col-6">
+        <div class="mb-3">
+          <label class="form-label">Descripcion</label>
+          <input type="text" class="form-control" [formControlName]="descriptionCN">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Unidad</label>
+          <input type="text" class="form-control" [formControlName]="unitCN">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Valor unitario</label>
+          <input type="text" class="form-control" [formControlName]="valueUnitCN">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">SKU</label>
+          <input type="text" class="form-control" [formControlName]="skuCN">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Cantidad</label>
+          <input type="text" class="form-control" [formControlName]="quantityCN">
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="mb-3">
+          <label class="form-label">Cantidad por caja</label>
+          <input type="text" class="form-control" [formControlName]="qtyBoxCN">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Peso</label>
+          <input type="text" class="form-control" [formControlName]="weightCN">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Volumen</label>
+          <input type="text" class="form-control" [formControlName]="volumenCN">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Marca</label>
+          <input type="text" class="form-control" [formControlName]="markCN">
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-danger" (click)="activeModal.dismiss('Cross click')">Cancelar</button>
+  <button type="button" class="btn btn-success" (click)="saveProduct()" [disabled]="!productForm.valid">Guardar</button>
+</div>
