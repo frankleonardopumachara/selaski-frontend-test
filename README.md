@@ -1,4 +1,4 @@
-# Selaski backend test
+# Selaski frontend test
 
 Pasos para ejecutar el proyecto
 
